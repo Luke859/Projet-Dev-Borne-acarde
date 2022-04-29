@@ -1,5 +1,20 @@
 import pygame
 import os 
+from gpiozero import Button
+
+def ButtonOn(button, text=""):
+    print(text + str(button.pin.number))
+
+def ButtonOff(button, text=""):
+    print(text + str(button.pin.number))
+
+button1red = Button("GPIO15")
+button2red = Button("GPIO18")
+button1blue = Button("GPIO12")
+button2blue = Button("GPIO07")
+
+button1red.when_pressed = ButtonOn(button1red, text = "Button 1 red ON")
+button1red.when_released = ButtonOff(button1red, text = "Button 1 red OFF")
 
 pygame.init()
 
