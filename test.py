@@ -16,6 +16,15 @@ button2blue = Button("GPIO07")
 button1red.when_pressed = ButtonOn(button1red, text = "Button 1 red ON")
 button1red.when_released = ButtonOff(button1red, text = "Button 1 red OFF")
 
+button2red.when_pressed = ButtonOn(button2red, text = "Button 2 red ON")
+button2red.when_released = ButtonOff(button2red, text = "Button 2 red OFF")
+
+button1blue.when_pressed = ButtonOn(button1blue, text = "Button 1 blue ON")
+button1blue.when_released = ButtonOff(button1blue, text = "Button 1 blue OFF")
+
+button2blue.when_pressed = ButtonOn(button2blue, text = "Button 2 blue ON")
+button2blue.when_released = ButtonOff(button2blue, text = "Button 2 blue OFF")
+
 pygame.init()
 
 display = pygame.display.set_mode((1000, 600))
