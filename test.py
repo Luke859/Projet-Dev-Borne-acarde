@@ -2,28 +2,39 @@ import pygame
 import os 
 from gpiozero import Button
 
-def ButtonOn(button, text=""):
-    print(text + str(button.pin.number))
+def ButtonOn(button):
+    print("button " + str(button.pin) + " pressed")
 
-def ButtonOff(button, text=""):
-    print(text + str(button.pin.number))
+def ButtonOff(button):
+    print("button " + str(button.pin) + " OFF")
+    
+def JoystickUp(joystick):
+    print("Joystick UP " + str(joystick.pin))
+    
+def JoystickLeft(joystick):
+    print("Joystick LEFT " + str(joystick.pin))
+    
+def JoystickRight(joystick):
+    print("Joystick RIGHT " + str(joystick.pin))
+    
+def JoystickDown(joystick):
+    print("Joystick DOWN " + str(joystick.pin))
+    
 
 button1red = Button("GPIO15")
 button2red = Button("GPIO18")
 button1blue = Button("GPIO12")
 button2blue = Button("GPIO07")
 
-button1red.when_pressed = ButtonOn(button1red, text = "Button 1 red ON")
-button1red.when_released = ButtonOff(button1red, text = "Button 1 red OFF")
+joystickBlueUp = Button("GPIO11")
+joystickBlueLeft =Button("GPIO06")
+joystickBlueRight = Button("GPIO13")
+joystickBlueDown = Button("GPIO05")
 
-button2red.when_pressed = ButtonOn(button2red, text = "Button 2 red ON")
-button2red.when_released = ButtonOff(button2red, text = "Button 2 red OFF")
-
-button1blue.when_pressed = ButtonOn(button1blue, text = "Button 1 blue ON")
-button1blue.when_released = ButtonOff(button1blue, text = "Button 1 blue OFF")
-
-button2blue.when_pressed = ButtonOn(button2blue, text = "Button 2 blue ON")
-button2blue.when_released = ButtonOff(button2blue, text = "Button 2 blue OFF")
+joystickRedUp = Button("GPIO04")
+joystickRedLeft =Button("GPIO27")
+joystickRedRight = Button("GPIO22")
+joystickRedDown = Button("GPIO17")
 
 pygame.init()
 
@@ -54,6 +65,30 @@ def main():
     character2 = pygame.Rect(700, 300, CHARACTER_WIDTH, CHARACTER_HEIGHT)
 
     clock = pygame.time.Clock()  #Controller la vitesse d'affichage de notre boucle 
+    
+    joystickBlueUp.when_pressed = JoystickUp
+    joystickBlueLeft.when_pressed = JoystickLeft
+    joystickBlueRight.when_pressed = JoystickRight
+    joystickBlueDown.when_pressed =JoystickDown
+    
+    joystickRedUp.when_pressed = JoystickUp
+    joystickRedLeft.when_pressed = JoystickLeft
+    joystickRedRight.when_pressed = JoystickRight
+    joystickRedDown.when_pressed =JoystickDown
+    
+    button1red.when_pressed = ButtonOn
+    button1red.when_released = ButtonOff
+
+    button2red.when_pressed = ButtonOn
+    button2red.when_released = ButtonOff
+
+    button1blue.when_pressed = ButtonOn
+    button1blue.when_released = ButtonOff
+
+    button2blue.when_pressed = ButtonOn
+    button2blue.when_released = ButtonOff
+
+
     open = True
     while open:
         clock.tick(FPS)
