@@ -103,7 +103,7 @@ while running:
         elif event.type == pygame.KEYDOWN:
             game.pressed[event.key] = True
 
-            if event.key == pygame.K_SPACE:
+            if event.key == button2blue.is_pressed :
                 game.player.launch_projectile()
 
         elif event.type == pygame.KEYUP:
