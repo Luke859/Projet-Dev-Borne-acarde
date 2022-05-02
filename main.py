@@ -1,105 +1,98 @@
-import pygame, sys
-from button import Button
-
-
+import pygame 
+from game import Game
+from gpiozero import Button
 pygame.init()
 
-SCREEN = pygame.display.set_mode((1280, 720))
-pygame.display.set_caption("Menu")
 
-BG = pygame.image.load("assets/Background.png")
+pygame.display.set_caption("Test")
+screen = pygame.display.set_mode((800,480))
 
-def get_font(size): # Returns Press-Start-2P in the desired size
-    return pygame.font.Font("assets/font.ttf", size)
 
-def play():
-    while True:
-        PLAY_MOUSE_POS = pygame.mouse.get_pos()
 
-        SCREEN.fill("black")
+backgroound = pygame.image.load("assets/Clipboard01.jpg")
 
-        PLAY_TEXT = get_font(45).render("This is the PLAY screen.", True, "White")
-        PLAY_RECT = PLAY_TEXT.get_rect(center=(640, 260))
-        SCREEN.blit(PLAY_TEXT, PLAY_RECT)
+game = Game()
+running = True
 
-        PLAY_BACK = Button(image=None, pos=(640, 460), 
-                            text_input="BACK", font=get_font(75), base_color="White", hovering_color="Green")
 
-        PLAY_BACK.changeColor(PLAY_MOUSE_POS)
-        PLAY_BACK.update(SCREEN)
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if PLAY_BACK.checkForInput(PLAY_MOUSE_POS):
-                    main_menu()
 
-        pygame.display.update()
+button1red = Button("GPIO15")
+button2red = Button("GPIO18")
+button1blue = Button("GPIO12")
+button2blue = Button("GPIO07")
+
+joystickBlueUp = Button("GPIO11")
+joystickBlueLeft =Button("GPIO06")
+joystickBlueRight = Button("GPIO13")
+joystickBlueDown = Button("GPIO05")
+
+joystickRedUp = Button("GPIO04")
+joystickRedLeft =Button("GPIO27")
+joystickRedRight = Button("GPIO22")
+joystickRedDown = Button("GPIO17")
+
+
+
+
+while running:
+ 
     
-def options():
-    while True:
-        OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
+    # joystickBlueUp.when_pressed = JoystickUp
+    # joystickBlueLeft.when_pressed = JoystickLeft
+    # joystickBlueRight.when_pressed = JoystickRight
+    # joystickBlueDown.when_pressed =JoystickDown
+    
+    # joystickRedUp.when_pressed = JoystickUp
+    # joystickRedLeft.when_pressed = JoystickLeft
+    # joystickRedRight.when_pressed = JoystickRight
+    # joystickRedDown.when_pressed =JoystickDown
+    
+    # button1red.when_pressed = ButtonOn
+    # button1red.when_released = ButtonOff
 
-        SCREEN.fill("white")
+    # button2red.when_pressed = ButtonOn
+    # button2red.when_released = ButtonOff
 
-        OPTIONS_TEXT = get_font(45).render("This is the OPTIONS screen.", True, "Black")
-        OPTIONS_RECT = OPTIONS_TEXT.get_rect(center=(640, 260))
-        SCREEN.blit(OPTIONS_TEXT, OPTIONS_RECT)
+    # button1blue.when_pressed = ButtonOn
+    # button1blue.when_released = ButtonOff
 
-        OPTIONS_BACK = Button(image=None, pos=(640, 460), 
-                            text_input="BACK", font=get_font(75), base_color="Black", hovering_color="Green")
+    # button2blue.when_pressed = ButtonOn
+    # button2blue.when_released = ButtonOff
 
-        OPTIONS_BACK.changeColor(OPTIONS_MOUSE_POS)
-        OPTIONS_BACK.update(SCREEN)
+    screen.blit(backgroound,(0,0))
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if OPTIONS_BACK.checkForInput(OPTIONS_MOUSE_POS):
-                    main_menu()
+    screen.blit(game.player.image, game.player.rect)
 
-        pygame.display.update()
+    for projectile in game.player.all_projectiles:
+        projectile.move()
 
-def main_menu():
-    while True:
-        SCREEN.blit(BG, (0, 0))
+    game.player.all_projectiles.draw(screen)
 
-        MENU_MOUSE_POS = pygame.mouse.get_pos()
-
-        MENU_TEXT = get_font(100).render("MAIN MENU", True, "#b68f40")
-        MENU_RECT = MENU_TEXT.get_rect(center=(640, 100))
-
-        PLAY_BUTTON = Button(image=pygame.image.load("assets/Play Rect.png"), pos=(640, 250), 
-                            text_input="PLAY", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-        OPTIONS_BUTTON = Button(image=pygame.image.load("assets/Options Rect.png"), pos=(640, 400), 
-                            text_input="OPTIONS", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-        QUIT_BUTTON = Button(image=pygame.image.load("assets/Quit Rect.png"), pos=(640, 550), 
-                            text_input="QUIT", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
+    if game.pressed.get(joystickBlueRight) and game.player.rect.x < screen.get_width() - game.player.rect.width:
+        game.player.move_right()
+    elif game.pressed.get(joystickBlueLeft) and game.player.rect.x > 0:
+        game.player.move_left()
+    elif game.pressed.get(joystickBlueUp) and game.player.rect.y > 0:
+        game.player.move_up()
+    elif game.pressed.get(joystickBlueDown) and game.player.rect.y < screen.get_height() - game.player.rect.height:
+        game.player.move_down()
         
 
-        SCREEN.blit(MENU_TEXT, MENU_RECT)
+    print(game.player.rect.x)
 
-        for button in [PLAY_BUTTON, OPTIONS_BUTTON, QUIT_BUTTON]:
-            button.changeColor(MENU_MOUSE_POS)
-            button.update(SCREEN)
-        
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    play()
-                if OPTIONS_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    options()
-                if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    pygame.quit()
-                    sys.exit()
+    pygame.display.flip()
 
-        pygame.display.update()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+            pygame.quit()
+        elif event.type == pygame.KEYDOWN:
+            game.pressed[event.key] = True
 
-main_menu()
+            if event.key == pygame.K_SPACE:
+                game.player.launch_projectile()
+
+        elif event.type == pygame.KEYUP:
+            game.pressed[event.key] = False
+          
