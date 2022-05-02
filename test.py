@@ -96,14 +96,14 @@ def main():
             if event.type == pygame.QUIT:
                 open = False
 
-        if joystickBlueRight.when_pressed :
+        if joystickBlueRight.is_pressed :
             character1.x += 1
-        elif joystickBlueLeft.when_pressed:
+        elif joystickBlueLeft.is_pressed:
             character1.x -= 1
-        elif joystickBlueUp.when_pressed:
-            character1.y += 1
-        elif joystickBlueDown.when_pressed: 
+        elif joystickBlueUp.is_pressed:
             character1.y -= 1
+        elif joystickBlueDown.is_pressed: 
+            character1.y += 1
 
         window_style(character1, character2)
     pygame.quit()
