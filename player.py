@@ -4,14 +4,14 @@ from projectile import Projectile
 class Player(pygame.sprite.Sprite):
 
 
-    def __init__(self, sprite, x, y):
+    def __init__(self, image, x, y):
         super().__init__()
         self.health = 100
         self.max_health = 100
         self.attack = 10
         self.velocity = 7
         self.all_projectiles = pygame.sprite.Group()
-        self.image = pygame.image.load(sprite)
+        self.image = pygame.image.load(image)
         self.image = pygame.transform.rotate(self.image, 270)
         self.image = pygame.transform.scale(self.image, (100,100))
         self.rect = self.image.get_rect()

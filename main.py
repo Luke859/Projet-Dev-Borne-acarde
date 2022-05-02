@@ -76,6 +76,7 @@ while running:
     screen.blit(backgroound,(0,0))
 
     screen.blit(game.player.image, game.player.rect)
+    screen.blit(game.player2.image, game.player2.rect)
 
     for projectile in game.player.all_projectiles:
         projectile.move()
