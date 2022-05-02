@@ -82,13 +82,13 @@ while running:
 
     game.player.all_projectiles.draw(screen)
 
-    if joystickBlueRight.when_pressed and game.player.rect.x < screen.get_width() - game.player.rect.width:
+    if joystickBlueRight.is_pressed and game.player.rect.x < screen.get_width() - game.player.rect.width:
         game.player.move_right()
-    elif joystickBlueLeft.when_pressed and game.player.rect.x > 0:
+    elif joystickBlueLeft.is_pressed and game.player.rect.x > 0:
         game.player.move_left()
-    elif joystickBlueUp.when_pressed and game.player.rect.y > 0:
+    elif joystickBlueUp.is_pressed and game.player.rect.y > 0:
         game.player.move_up()
-    elif joystickBlueDown.when_pressed and game.player.rect.y < screen.get_height() - game.player.rect.height:
+    elif joystickBlueDown.is_pressed and game.player.rect.y < screen.get_height() - game.player.rect.height:
         game.player.move_down()
         
 
