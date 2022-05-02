@@ -2,8 +2,6 @@ import pygame
 import os 
 from gpiozero import Button
 
-LUKEEEEEEEEEEEEEEEEEEEE
-
 def ButtonOn(button):
     print("button " + str(button.pin) + " pressed")
 
