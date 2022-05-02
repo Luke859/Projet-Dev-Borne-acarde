@@ -9,7 +9,7 @@ class Player(pygame.sprite.Sprite):
         self.health = 100
         self.max_health = 100
         self.attack = 10
-        self.velocity = 1
+        self.velocity = 7
         self.all_projectiles = pygame.sprite.Group()
         self.image = pygame.image.load("assets/red_tank.png")
         self.image = pygame.transform.rotate(self.image, 270)
