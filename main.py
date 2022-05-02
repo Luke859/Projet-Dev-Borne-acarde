@@ -3,20 +3,6 @@ from game import Game
 from gpiozero import Button
 pygame.init()
 
-
-pygame.display.set_caption("Test")
-screen = pygame.display.set_mode((800,480))
-
-
-
-backgroound = pygame.image.load("assets/Clipboard01.jpg")
-
-game = Game()
-running = True
-
-
-
-
 button1red = Button("GPIO15")
 button2red = Button("GPIO18")
 button1blue = Button("GPIO12")
@@ -31,6 +17,17 @@ joystickRedUp = Button("GPIO04")
 joystickRedLeft =Button("GPIO27")
 joystickRedRight = Button("GPIO22")
 joystickRedDown = Button("GPIO17")
+
+pygame.display.set_caption("Test")
+screen = pygame.display.set_mode((800,480))
+
+
+
+backgroound = pygame.image.load("assets/Clipboard01.jpg")
+
+game = Game()
+running = True
+
 
 
 
@@ -69,13 +66,13 @@ while running:
 
     game.player.all_projectiles.draw(screen)
 
-    if game.pressed.get(joystickBlueRight) and game.player.rect.x < screen.get_width() - game.player.rect.width:
+    if joystickBlueRight.when_pressed and game.player.rect.x < screen.get_width() - game.player.rect.width:
         game.player.move_right()
-    elif game.pressed.get(joystickBlueLeft) and game.player.rect.x > 0:
+    elif joystickBlueLeft.wehn_pressed and game.player.rect.x > 0:
         game.player.move_left()
-    elif game.pressed.get(joystickBlueUp) and game.player.rect.y > 0:
+    elif joystickBlueUp.when_pressed and game.player.rect.y > 0:
         game.player.move_up()
-    elif game.pressed.get(joystickBlueDown) and game.player.rect.y < screen.get_height() - game.player.rect.height:
+    elif joystickBlueDown.wehn_pressed and game.player.rect.y < screen.get_height() - game.player.rect.height:
         game.player.move_down()
         
 
