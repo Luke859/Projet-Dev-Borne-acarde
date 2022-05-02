@@ -90,22 +90,24 @@ while running:
         game.player.move_up()
     elif joystickBlueDown.is_pressed and game.player.rect.y < screen.get_height() - game.player.rect.height:
         game.player.move_down()
+    if button2blue.is_pressed :
+                game.player.launch_projectile()
         
 
     print(game.player.rect.x)
 
     pygame.display.flip()
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-            pygame.quit()
-        elif event.type == pygame.KEYDOWN:
-            game.pressed[event.key] = True
+    # for event in pygame.event.get():
+    #     if event.type == pygame.QUIT:
+    #         running = False
+    #         pygame.quit()
+    #     elif event.type == pygame.KEYDOWN:
+    #         game.pressed[event.key] = True
 
-            if button2blue.is_pressed :
-                game.player.launch_projectile()
+    #         if button2blue.is_pressed :
+    #             game.player.launch_projectile()
 
-        elif event.type == pygame.KEYUP:
-            game.pressed[event.key] = False
+    #     elif event.type == pygame.KEYUP:
+    #         game.pressed[event.key] = False
           
