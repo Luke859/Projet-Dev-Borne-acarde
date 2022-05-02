@@ -10,7 +10,7 @@ class Projectile(pygame.sprite.Sprite):
 
         self.rect.x = player.rect.x 
         self.rect.y = player.rect.y 
-        self.velocity = 2
+        self.velocity = 10
 
     def remove(self):
         self.player.all_projectiles.remove(self)
