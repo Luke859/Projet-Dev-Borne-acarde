@@ -113,8 +113,7 @@ while running:
         
 
     print(game.player.rect.x)
-    print(game.player2.rect.x)
-
+    
 
     pygame.display.flip()
 
