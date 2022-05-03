@@ -94,7 +94,11 @@ while running:
     if button2blue.is_pressed :
         game.player.launch_projectile()
 
-    game.player2.all_projectiles.draw(screen)
+    
+    for projectile in game.player2.all_projectiles:
+        projectile.move()
+
+        game.player2.all_projectiles.draw(screen)
 
     if joystickRedRight.is_pressed and game.player.rect.x < screen.get_width() - game.player.rect.width:
         game.player.move_right()
@@ -109,6 +113,8 @@ while running:
         
 
     print(game.player.rect.x)
+    print(game.player2.rect.x)
+
 
     pygame.display.flip()
 
