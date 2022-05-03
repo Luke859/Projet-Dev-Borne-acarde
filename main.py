@@ -4,7 +4,7 @@ from gpiozero import Button
 pygame.init()
 
 pygame.display.set_caption("Test")
-screen = pygame.display.set_mode((700,400))
+screen = pygame.display.set_mode((800,400))
 
 backgroound = pygame.image.load("assets/Clipboard01.jpg")
 
