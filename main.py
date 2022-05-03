@@ -1,4 +1,5 @@
 import pygame 
+import math
 from game import Game
 from gpiozero import Button
 pygame.init()
@@ -11,7 +12,10 @@ backgroound = pygame.image.load("assets/Clipboard01.jpg")
 banner = pygame.image.load("assets/tankImage.png")
 banner = pygame.transform.scale(banner, (200, 200))
 banner_rect = banner.get_rect()
-banner_rect.x = screen.get_width() / 3
+banner_rect.x = math.ceil(screen.get_width() / 3)
+
+play_button = pygame.image.load('assets/button.png')
+play_button = pygame.transform.scale(play_button, (400, 150))
 
 game = Game()
 running = True
@@ -43,6 +47,7 @@ while running:
 
     else:
         screen.blit(banner, banner_rect)
+        screen.blit(play_button, (0, 0))
 
 
     pygame.display.flip()
