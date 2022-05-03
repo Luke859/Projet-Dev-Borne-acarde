@@ -100,14 +100,14 @@ while running:
 
         game.player2.all_projectiles.draw(screen)
 
-    if joystickRedRight.is_pressed and game.player.rect.x < screen.get_width() - game.player.rect.width:
-        game.player.move_right()
-    elif joystickRedLeft.is_pressed and game.player.rect.x > 0:
-        game.player.move_left()
-    elif joystickRedUp.is_pressed and game.player.rect.y > 0:
-        game.player.move_up()
-    elif joystickRedDown.is_pressed and game.player.rect.y < screen.get_height() - game.player.rect.height:
-        game.player.move_down()
+    if joystickRedRight.is_pressed and game.player2.rect.x < screen.get_width() - game.player2.rect.width:
+        game.player2.move_right()
+    elif joystickRedLeft.is_pressed and game.player2.rect.x > 0:
+        game.player2.move_left()
+    elif joystickRedUp.is_pressed and game.player2.rect.y > 0:
+        game.player2.move_up()
+    elif joystickRedDown.is_pressed and game.player2.rect.y < screen.get_height() - game.player2.rect.height:
+        game.player2.move_down()
     if button2red.is_pressed :
         game.player2.launch_projectile()
         
