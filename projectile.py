@@ -9,14 +9,20 @@ class Projectile(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
 
         self.rect.x = player.rect.x 
+        
         self.rect.y = player.rect.y 
         self.velocity = 10
+        
 
     def remove(self):
         self.player.all_projectiles.remove(self)
         
-    def move(self):
-        self.rect.x += self.velocity * -1
+    def move(self, direction):
+        self.rect.x += self.velocity * direction
+     
+
 
         if self.rect.x > 800:
             self.remove()
+
+

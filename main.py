@@ -109,7 +109,7 @@ while running:
     elif joystickRedDown.is_pressed and game.player2.rect.y < screen.get_height() - game.player2.rect.height:
         game.player2.move_down()
     if button2red.is_pressed :
-        game.player2.launch_projectile()
+        game.player2.launch_projectile(-1)
         
 
     print(game.player.rect.x)
