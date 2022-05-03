@@ -19,7 +19,7 @@ joystickRedRight = Button("GPIO22")
 joystickRedDown = Button("GPIO17")
 
 pygame.display.set_caption("Test")
-screen = pygame.display.set_mode((800,480))
+screen = pygame.display.set_mode((800,400))
 
 
 
