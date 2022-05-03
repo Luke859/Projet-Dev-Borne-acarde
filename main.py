@@ -9,6 +9,9 @@ screen = pygame.display.set_mode((800,400))
 backgroound = pygame.image.load("assets/Clipboard01.jpg")
 
 banner = pygame.image.load("assets/tankImage.png")
+banner = pygame.transform.scale(banner, (400, 400))
+banner_rect = banner.get_rect()
+banner_rect.x = screen.get_width() / 2 
 
 game = Game()
 running = True
@@ -39,7 +42,7 @@ while running:
         game.update(screen)
 
     else:
-        screen.blit(banner, (0, 0))
+        screen.blit(banner, banner_rect)
 
 
     pygame.display.flip()
