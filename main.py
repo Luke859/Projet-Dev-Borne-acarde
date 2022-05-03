@@ -11,7 +11,7 @@ backgroound = pygame.image.load("assets/Clipboard01.jpg")
 banner = pygame.image.load("assets/tankImage.png")
 banner = pygame.transform.scale(banner, (250, 250))
 banner_rect = banner.get_rect()
-banner_rect.x = screen.get_width() / 2 
+banner_rect.x = screen.get_width() / 4 
 
 game = Game()
 running = True
