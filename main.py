@@ -8,7 +8,7 @@ screen = pygame.display.set_mode((800,400))
 
 backgroound = pygame.image.load("assets/Clipboard01.jpg")
 
-banner = pygame.image.load("assets/tankAttack.png")
+banner = pygame.image.load("assets/tankImage.png")
 
 game = Game()
 running = True
