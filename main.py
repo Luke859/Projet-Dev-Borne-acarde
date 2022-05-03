@@ -79,7 +79,7 @@ while running:
     screen.blit(game.player2.image, game.player2.rect)
 
     for projectile in game.player.all_projectiles:
-        projectile.move()
+        projectile.move(1)
 
     game.player.all_projectiles.draw(screen)
 
@@ -92,11 +92,11 @@ while running:
     elif joystickBlueDown.is_pressed and game.player.rect.y < screen.get_height() - game.player.rect.height:
         game.player.move_down()
     if button2blue.is_pressed :
-        game.player.launch_projectile(1)
+        game.player.launch_projectile()
 
     
     for projectile in game.player2.all_projectiles:
-        projectile.move()
+        projectile.move(-1)
 
         game.player2.all_projectiles.draw(screen)
 
@@ -109,7 +109,7 @@ while running:
     elif joystickRedDown.is_pressed and game.player2.rect.y < screen.get_height() - game.player2.rect.height:
         game.player2.move_down()
     if button2red.is_pressed :
-        game.player2.launch_projectile(-1)
+        game.player2.launch_projectile()
         
 
     print(game.player.rect.x)
