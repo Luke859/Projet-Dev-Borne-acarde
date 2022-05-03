@@ -54,13 +54,7 @@ while running:
         screen.blit(banner, banner_rect)
         screen.blit(play_button, play_button_rect)
 
-
+    if button1blue.is_pressed :
+        if play_button_rect.collidepoint(event.pos):
+            game.is_playing = True 
     pygame.display.flip()
-
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-            pygame.quit()
-        if event.type == button1blue.is_pressed :
-            if play_button_rect.collidepoint(event.pos):
-                game.is_playing = True 
