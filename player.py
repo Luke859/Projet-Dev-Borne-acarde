@@ -12,7 +12,7 @@ class Player(pygame.sprite.Sprite):
         self.velocity = 7
         self.all_projectiles = pygame.sprite.Group()
         self.image = pygame.image.load(image)
-        self.image = pygame.transform.rotate(self.image, 270)
+        self.image = pygame.transform.rotate(self.image, 180)
         self.image = pygame.transform.scale(self.image, (100,100))
         self.rect = self.image.get_rect()
         self.rect.x = x
