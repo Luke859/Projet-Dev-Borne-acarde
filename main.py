@@ -9,6 +9,8 @@ screen = pygame.display.set_mode((800,400))
 
 backgroound = pygame.image.load("assets/Clipboard01.jpg")
 
+button1blue = Button("GPIO12")
+
 banner = pygame.image.load("assets/tankImage.png")
 banner = pygame.transform.scale(banner, (200, 200))
 banner_rect = banner.get_rect()
@@ -55,16 +57,10 @@ while running:
 
     pygame.display.flip()
 
-    # for event in pygame.event.get():
-    #     if event.type == pygame.QUIT:
-    #         running = False
-    #         pygame.quit()
-    #     elif event.type == pygame.KEYDOWN:
-    #         game.pressed[event.key] = True
-
-    #         if button2blue.is_pressed :
-    #             game.player.launch_projectile()
-
-    #     elif event.type == pygame.KEYUP:
-    #         game.pressed[event.key] = False
-          
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+            pygame.quit()
+        if event.type == button1blue.is_pressed :
+            if play_button_rect.collidepoint(event.pos):
+                game.is_playing = True 
