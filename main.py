@@ -93,6 +93,19 @@ while running:
         game.player.move_down()
     if button2blue.is_pressed :
         game.player.launch_projectile()
+
+    game.player2.all_projectiles.draw(screen)
+
+    if joystickRedRight.is_pressed and game.player.rect.x < screen.get_width() - game.player.rect.width:
+        game.player.move_right()
+    elif joystickRedLeft.is_pressed and game.player.rect.x > 0:
+        game.player.move_left()
+    elif joystickRedUp.is_pressed and game.player.rect.y > 0:
+        game.player.move_up()
+    elif joystickRedDown.is_pressed and game.player.rect.y < screen.get_height() - game.player.rect.height:
+        game.player.move_down()
+    if button2red.is_pressed :
+        game.player2.launch_projectile()
         
 
     print(game.player.rect.x)
