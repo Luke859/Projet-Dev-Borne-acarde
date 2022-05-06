@@ -30,12 +30,12 @@ while running:
 
     screen.blit(backgroound,(0,0))
 
-    if game.is_playing:
-        game.update(screen)
+    # if game.is_playing:
+    #     game.update(screen)
 
-    else:
-        screen.blit(banner, banner_rect)
-        screen.blit(play_button, play_button_rect)
+    # else:
+    #     screen.blit(banner, banner_rect)
+    #     screen.blit(play_button, play_button_rect)
 
 
     pygame.display.flip()
