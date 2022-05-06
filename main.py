@@ -21,62 +21,13 @@ joystickRedDown = Button("GPIO17")
 pygame.display.set_caption("Test")
 screen = pygame.display.set_mode((800,400))
 
-
-
-backgroound = pygame.image.load("assets/Clipboard01.jpg")
-
 game = Game()
 running = True
 
-
-def ButtonOn(button):
-    print("button " + str(button.pin) + " pressed")
-
-def ButtonOff(button):
-    print("button " + str(button.pin) + " OFF")
-    
-def JoystickUp(joystick):
-    print("Joystick UP " + str(joystick.pin))
-    
-def JoystickLeft(joystick):
-    print("Joystick LEFT " + str(joystick.pin))
-    
-def JoystickRight(joystick):
-    print("Joystick RIGHT " + str(joystick.pin))
-    
-def JoystickDown(joystick):
-    print("Joystick DOWN " + str(joystick.pin))
-
-
 while running:
- 
     
-    joystickBlueUp.when_pressed = JoystickUp
-    joystickBlueLeft.when_pressed = JoystickLeft
-    joystickBlueRight.when_pressed = JoystickRight
-    joystickBlueDown.when_pressed =JoystickDown
-    
-    joystickRedUp.when_pressed = JoystickUp
-    joystickRedLeft.when_pressed = JoystickLeft
-    joystickRedRight.when_pressed = JoystickRight
-    joystickRedDown.when_pressed =JoystickDown
-    
-    button1red.when_pressed = ButtonOn
-    button1red.when_released = ButtonOff
-
-    button2red.when_pressed = ButtonOn
-    button2red.when_released = ButtonOff
-
-    button1blue.when_pressed = ButtonOn
-    button1blue.when_released = ButtonOff
-
-    button2blue.when_pressed = ButtonOn
-    button2blue.when_released = ButtonOff
-
-    screen.blit(backgroound,(0,0))
-
-    screen.blit(game.player.image, game.player.rect)
-    screen.blit(game.player2.image, game.player2.rect)
+    game.curr_menu.display_menu()
+    game.game_loop()
 
     for projectile in game.player.all_projectiles:
         projectile.move(1)
