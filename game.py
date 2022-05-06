@@ -1,6 +1,22 @@
 from player import Player
 from menu import *
+from gpiozero import Button
 import pygame
+
+button1red = Button("GPIO15")
+button2red = Button("GPIO18")
+button1blue = Button("GPIO12")
+button2blue = Button("GPIO07")
+
+joystickBlueUp = Button("GPIO11")
+joystickBlueLeft =Button("GPIO06")
+joystickBlueRight = Button("GPIO13")
+joystickBlueDown = Button("GPIO05")
+
+joystickRedUp = Button("GPIO04")
+joystickRedLeft =Button("GPIO27")
+joystickRedRight = Button("GPIO22")
+joystickRedDown = Button("GPIO17")
 
 class Game:
     def __init__(self):
@@ -29,6 +45,38 @@ class Game:
             self.window.blit(self.background,(0,0))
             self.window.blit(self.player.image, self.player.rect)
             self.window.blit(self.player2.image, self.player2.rect)
+            for projectile in self.player.all_projectiles:
+                projectile.move(1)
+
+            self.player.all_projectiles.draw(self.window)
+
+            if joystickBlueRight.is_pressed and self.player.rect.x < self.window.get_width() - self.player.rect.width:
+                self.player.move_right()
+            elif joystickBlueLeft.is_pressed and self.player.rect.x > 0:
+                self.player.move_left()
+            elif joystickBlueUp.is_pressed and self.player.rect.y > 0:
+                self.player.move_up()
+            elif joystickBlueDown.is_pressed and self.player.rect.y < self.window.get_height() - self.player.rect.height:
+                self.player.move_down()
+            if button2blue.is_pressed :
+                self.player.launch_projectile()
+
+            
+            for projectile in self.player2.all_projectiles:
+                projectile.move(-1)
+
+                self.player2.all_projectiles.draw(self.window)
+
+            if joystickRedRight.is_pressed and self.player2.rect.x < self.window.get_width() - self.player2.rect.width:
+                self.player2.move_right()
+            elif joystickRedLeft.is_pressed and self.player2.rect.x > 0:
+                self.player2.move_left()
+            elif joystickRedUp.is_pressed and self.player2.rect.y > 0:
+                self.player2.move_up()
+            elif joystickRedDown.is_pressed and self.player2.rect.y < self.window.get_height() - self.player2.rect.height:
+                self.player2.move_down()
+            if button2red.is_pressed :
+                self.player2.launch_projectile()
             pygame.display.update()
             self.reset_keys()
 
