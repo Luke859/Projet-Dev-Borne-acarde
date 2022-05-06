@@ -19,9 +19,6 @@ joystickRedRight = Button("GPIO22")
 joystickRedDown = Button("GPIO17")
 
 class Game():
-    player = Player("assets/red_tank.png")
-    player2 = Player("assets/bleu_tank.png")
-
     def __init__(self):
         pygame.init()
         self.running, self.playing = True, False
@@ -30,6 +27,8 @@ class Game():
         self.display = pygame.Surface((self.DISPLAY_W,self.DISPLAY_H))
         self.background = pygame.image.load("assets/Clipboard01.jpg")
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
+        self.player = Player("assets/red_tank.png")
+        # self.player2 = Player("assets/bleu_tank.png")
         self.font_name = '8-BIT WONDER.TTF'
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
         self.main_menu = MainMenu(self)
