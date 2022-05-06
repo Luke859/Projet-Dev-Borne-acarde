@@ -23,9 +23,8 @@ class Game():
         pygame.init()
         self.running, self.playing = True, False
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
-        self.DISPLAY_W, self.DISPLAY_H = 480, 270
         self.background = pygame.image.load("assets/Clipboard01.jpg")
-        self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
+        self.screen = pygame.display.set_mode((800,400))
         self.font_name = '8-BIT WONDER.TTF'
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
         self.main_menu = MainMenu(self)
@@ -39,8 +38,8 @@ class Game():
             if self.START_KEY:
                 self.playing= False
             self.display.fill(self.BLACK)
-            self.window.blit(self.background, (0,0))
-            self.window.blit(self.player.image, self.player.rect)
+            self.screen.blit(self.background, (0,0))
+            self.screen.blit(self.player.image, self.player.rect)
             pygame.display.update()
             self.reset_keys()
 
@@ -69,7 +68,7 @@ class Game():
         text_surface = font.render(text, True, self.WHITE)
         text_rect = text_surface.get_rect()
         text_rect.center = (x,y)
-        self.display.blit(text_surface,text_rect)
+        self.background.blit(text_surface,text_rect)
 
     # def update(self, screen): 
     #     screen.blit(self.player.image, self.player.rect)
