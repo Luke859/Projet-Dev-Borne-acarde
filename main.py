@@ -9,7 +9,7 @@ screen = pygame.display.set_mode((800,400))
 
 backgroound = pygame.image.load("assets/Clipboard01.jpg")
 
-button1blue = Button("GPIO12")
+# button1blue = Button("GPIO12")
 
 banner = pygame.image.load("assets/tankImage.png")
 banner = pygame.transform.scale(banner, (200, 200))
@@ -23,27 +23,11 @@ play_button_rect.x = math.ceil(screen.get_width() / 3.33)
 play_button_rect.y = math.ceil(screen.get_height() / 2)
 
 game = Game()
-running = True
 
-# def ButtonOn(button):
-#     print("button " + str(button.pin) + " pressed")
+while game.running:
 
-# def ButtonOff(button):
-#     print("button " + str(button.pin) + " OFF")
-    
-# def JoystickUp(joystick):
-#     print("Joystick UP " + str(joystick.pin))
-    
-# def JoystickLeft(joystick):
-#     print("Joystick LEFT " + str(joystick.pin))
-    
-# def JoystickRight(joystick):
-#     print("Joystick RIGHT " + str(joystick.pin))
-    
-# def JoystickDown(joystick):
-#     print("Joystick DOWN " + str(joystick.pin))
-
-while running:
+    # g.curr_menu.display_menu()
+    # g.game_loop()
 
     screen.blit(backgroound,(0,0))
 
@@ -62,6 +46,6 @@ while running:
             running = False
             pygame.quit()
             
-        if event.type == button1blue.is_pressed :
-            if play_button_rect.collidepoint(event.pos):
-                game.is_playing = True 
+        # if event.type == button1blue.is_pressed :
+        #     if play_button_rect.collidepoint(event.pos):
+        #         game.is_playing = True 
