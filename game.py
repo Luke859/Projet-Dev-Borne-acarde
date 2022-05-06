@@ -21,9 +21,6 @@ joystickRedDown = Button("GPIO17")
 class Game():
     def __init__(self):
         pygame.init()
-        self.player = Player("assets/red_tank.png", 200, 200)
-        self.player2 = Player("assets/bleu_tank.png", 600, 200)
-        self.pressed = {}
         self.running, self.playing = True, False
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
         self.DISPLAY_W, self.DISPLAY_H = 800,400
@@ -31,6 +28,8 @@ class Game():
         self.background = pygame.image.load("assets/Clipboard01.jpg")
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
         self.font_name = '8-BIT WONDER.TTF'
+        self.player = Player("assets/red_tank.png", 200, 200)
+        self.player2 = Player("assets/bleu_tank.png", 600, 200)
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
         self.main_menu = MainMenu(self)
         self.options = OptionsMenu(self)
