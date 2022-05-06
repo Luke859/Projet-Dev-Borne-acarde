@@ -41,6 +41,22 @@ class Game():
                 self.playing= False
             self.window.blit(self.background, (0,0))
             self.window.blit(self.player.image, self.player.rect)
+
+            for projectile in self.player.all_projectiles:
+                projectile.move()
+
+            self.player.all_projectiles.draw(self.window)
+
+            if joystickBlueRight.is_pressed and self.player.rect.x < self.window.get_width() - game.player.rect.width:
+                self.player.move_right()
+            elif joystickBlueLeft.is_pressed and self.player.rect.x > 0:
+                self.player.move_left()
+            elif joystickBlueUp.is_pressed and self.player.rect.y > 0:
+                self.player.move_up()
+            elif joystickBlueDown.is_pressed and self.player.rect.y < self.window.get_height() - game.player.rect.height:
+                self.player.move_down()
+            if button2blue.is_pressed :
+                self.player.launch_projectile()
             pygame.display.update()
             self.reset_keys()
 
@@ -71,22 +87,4 @@ class Game():
         text_rect.center = (x,y)
         self.display.blit(text_surface,text_rect)
 
-    # def update(self, screen): 
-    #     screen.blit(self.player.image, self.player.rect)
-
-    #     for projectile in self.player.all_projectiles:
-    #         projectile.move()
-
-    #     self.player.all_projectiles.draw(screen)
-
-    #     if joystickBlueRight.is_pressed and self.player.rect.x < screen.get_width() - game.player.rect.width:
-    #         self.player.move_right()
-    #     elif joystickBlueLeft.is_pressed and self.player.rect.x > 0:
-    #         self.player.move_left()
-    #     elif joystickBlueUp.is_pressed and self.player.rect.y > 0:
-    #         self.player.move_up()
-    #     elif joystickBlueDown.is_pressed and self.player.rect.y < screen.get_height() - game.player.rect.height:
-    #         self.player.move_down()
-    #     if button2blue.is_pressed :
-    #         self.player.launch_projectile()
 
