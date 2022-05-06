@@ -20,8 +20,9 @@ class Game:
 
     def __init__(self):
         self.is_playing = False
-        self.player = Player()
         self.pressed = {}
+        self.player = Player("assets/red_tank.png", 200, 200) 
+        self.player2 = Player("assets/bleu_tank.png", 600, 200)
 
     def update(self, screen): 
         screen.blit(self.player.image, self.player.rect)
