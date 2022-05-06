@@ -14,6 +14,7 @@ class Game:
         self.player = Player("assets/red_tank.png", 200, 200)
         self.player2 = Player("assets/bleu_tank.png", 600, 200)
         self.background = pygame.image.load("assets/Clipboard01.jpg")
+        self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
         self.pressed = {}
         self.main_menu = MainMenu(self)
         self.options = OptionsMenu(self)
