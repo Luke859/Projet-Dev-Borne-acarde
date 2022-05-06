@@ -1,28 +1,10 @@
 import pygame
 from menu import *
-# from player import Player
-# from gpiozero import Button
 
-# button1red = Button("GPIO15")
-# button2red = Button("GPIO18")
-# button1blue = Button("GPIO12")
-# button2blue = Button("GPIO07")
-
-# joystickBlueUp = Button("GPIO11")
-# joystickBlueLeft =Button("GPIO06")
-# joystickBlueRight = Button("GPIO13")
-# joystickBlueDown = Button("GPIO05")
-
-# joystickRedUp = Button("GPIO04")
-# joystickRedLeft =Button("GPIO27")
-# joystickRedRight = Button("GPIO22")
-# joystickRedDown = Button("GPIO17")
 
 class Game():
     def __init__(self):
         pygame.init()
-        self.player = Player()
-        self.pressed = {}
         self.running, self.playing = True, False
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
         self.DISPLAY_W, self.DISPLAY_H = 480, 270
@@ -46,6 +28,8 @@ class Game():
             self.window.blit(self.display, (0,0))
             pygame.display.update()
             self.reset_keys()
+
+
 
     def check_events(self):
         for event in pygame.event.get():
@@ -71,6 +55,24 @@ class Game():
         text_rect = text_surface.get_rect()
         text_rect.center = (x,y)
         self.display.blit(text_surface,text_rect)
+        
+# from player import Player
+# from gpiozero import Button
+
+# button1red = Button("GPIO15")
+# button2red = Button("GPIO18")
+# button1blue = Button("GPIO12")
+# button2blue = Button("GPIO07")
+
+# joystickBlueUp = Button("GPIO11")
+# joystickBlueLeft =Button("GPIO06")
+# joystickBlueRight = Button("GPIO13")
+# joystickBlueDown = Button("GPIO05")
+
+# joystickRedUp = Button("GPIO04")
+# joystickRedLeft =Button("GPIO27")
+# joystickRedRight = Button("GPIO22")
+# joystickRedDown = Button("GPIO17")
 
     # def update(self, screen): 
     #     screen.blit(self.player.image, self.player.rect)

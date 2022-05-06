@@ -1,7 +1,14 @@
-import pygame 
-import math
 from game import Game
-from gpiozero import Button
+
+g = Game()
+
+while g.running:
+    g.curr_menu.display_menu()
+    g.game_loop()
+
+# import pygame 
+# import math
+# from gpiozero import Button
 
 # pygame.init()
 
@@ -9,12 +16,6 @@ from gpiozero import Button
 # screen = pygame.display.set_mode((800,400))
 
 # background = pygame.image.load("assets/Clipboard01.jpg")
-
-g = Game()
-
-while g.running:
-    g.curr_menu.display_menu()
-    g.game_loop()
 
 # button1blue = Button("GPIO12")
 
