@@ -27,8 +27,6 @@ class Game():
         self.display = pygame.Surface((self.DISPLAY_W,self.DISPLAY_H))
         self.background = pygame.image.load("assets/Clipboard01.jpg")
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
-        self.player = Player("assets/red_tank.png")
-        # self.player2 = Player("assets/bleu_tank.png")
         self.font_name = '8-BIT WONDER.TTF'
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
         self.main_menu = MainMenu(self)
@@ -43,8 +41,10 @@ class Game():
                 self.playing= False
 
             self.window.blit(self.background, (0,0))
-            self.window.blit(self.player, (200, 200))
-            self.window.blit(self.player2, (600, 200))
+            self.player = Player("assets/red_tank.png", 200, 200)
+            self.player2 = Player("assets/bleu_tank.png", 600, 200)
+            self.window.blit(self.player.image, self.player.rect)
+            self.window.blit(self.player2.image, self.player2.rect)
 
             for projectile in self.player.all_projectiles:
                 projectile.move()
