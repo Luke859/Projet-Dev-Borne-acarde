@@ -3,7 +3,6 @@ import pygame
 from projectile import Projectile
 class Player(pygame.sprite.Sprite):
 
-
     def __init__(self):
         super().__init__()
         self.health = 100
