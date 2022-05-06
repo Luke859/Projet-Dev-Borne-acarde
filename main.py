@@ -24,10 +24,9 @@ play_button_rect.y = math.ceil(screen.get_height() / 2)
 
 game = Game()
 
-while game.running:
+running = True
 
-    # g.curr_menu.display_menu()
-    # g.game_loop()
+while running:
 
     screen.blit(backgroound,(0,0))
 
