@@ -8,7 +8,7 @@ from gpiozero import Button
 # pygame.display.set_caption("Test")
 # screen = pygame.display.set_mode((800,400))
 
-background = pygame.image.load("assets/Clipboard01.jpg")
+# background = pygame.image.load("assets/Clipboard01.jpg")
 
 g = Game()
 
