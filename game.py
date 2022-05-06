@@ -28,8 +28,6 @@ class Game():
         self.background = pygame.image.load("assets/Clipboard01.jpg")
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
         self.font_name = '8-BIT WONDER.TTF'
-        self.player = Player("assets/red_tank.png", 200, 200)
-        self.player2 = Player("assets/bleu_tank.png", 600, 200)
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
         self.main_menu = MainMenu(self)
         self.options = OptionsMenu(self)
@@ -37,6 +35,8 @@ class Game():
         self.curr_menu = self.main_menu
 
     def game_loop(self):
+        self.player = Player("assets/red_tank.png", 200, 200)
+        self.player2 = Player("assets/bleu_tank.png", 600, 200)
         while self.playing:
             self.check_events()
             if self.START_KEY:
