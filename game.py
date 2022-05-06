@@ -29,8 +29,6 @@ class Game():
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
         self.font_name = '8-BIT WONDER.TTF'
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
-        self.player = Player(self)
-        self.player2 = Player(self)
         self.main_menu = MainMenu(self)
         self.options = OptionsMenu(self)
         self.credits = CreditsMenu(self)
@@ -43,8 +41,10 @@ class Game():
                 self.playing= False
 
             self.window.blit(self.background, (0,0))
-            self.window.blit(self.player.image, self.player.rect)
-            self.window.blit(self.player2.image, self.player2.rect)
+            # self.player = Player("assets/red_tank.png", 200, 200)
+            # self.player2 = Player("assets/bleu_tank.png", 600, 200)
+            # self.window.blit(self.player.image, self.player.rect)
+            # self.window.blit(self.player2.image, self.player2.rect)
 
             for projectile in self.player.all_projectiles:
                 projectile.move()
