@@ -10,11 +10,11 @@ from gpiozero import Button
 
 background = pygame.image.load("assets/Clipboard01.jpg")
 
-game = Game()
+g = Game()
 
-while game.running:
-    game.curr_menu.display_menu()
-    game.game_loop()
+while g.running:
+    g.curr_menu.display_menu()
+    g.game_loop()
 
 # button1blue = Button("GPIO12")
 
