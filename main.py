@@ -8,7 +8,7 @@ running = True
 while running:
     
     game.curr_menu.display_menu()
-    game.game_loop()
+    game.game_time()
     
     pygame.display.flip()
           
