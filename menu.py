@@ -1,7 +1,6 @@
 import pygame
 from gpiozero import Button
 
-button1red = Button("GPIO15")
 button2red = Button("GPIO18")
 button1blue = Button("GPIO12")
 button2blue = Button("GPIO07")
