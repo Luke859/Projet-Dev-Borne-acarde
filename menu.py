@@ -120,7 +120,7 @@ class CreditsMenu(Menu):
                 self.run_display = False
             self.game.display.fill(self.game.BLACK)
             self.game.draw_text('Credits', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
-            self.game.draw_text('Jeu créée par', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 10)
-            self.game.draw_text('Nathy Mellal et Luke Jones', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 20)
-            self.game.draw_text('en B2 Informatiue à Ynov Campus', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 30)
+            self.game.draw_text('Jeu cree par', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 30)
+            self.game.draw_text('Nathy Mellal et Luke Jones', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 60)
+            self.game.draw_text('en B2 Informatique a Ynov Campus', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 90)
             self.blit_screen()
