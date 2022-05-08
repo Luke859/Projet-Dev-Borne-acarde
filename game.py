@@ -59,9 +59,9 @@ class Game:
 
             if joystickRedRight.is_pressed and self.player2.rect.x < self.window.get_width() - self.player2.rect.width:
                 self.player2.move_right()
-            elif joystickRedLeft.is_pressed and self.player2.rect.x > 0:
+            elif joystickRedLeft.is_pressed and self.player2.rect.x + self.player2.rect.width < self.border.x:
                 self.player2.move_left()
-            elif joystickRedUp.is_pressed and self.player2.rect.x + self.player2.rect.width < self.border.x:
+            elif joystickRedUp.is_pressed and self.player2.rect.y > 0:
                 self.player2.move_up()
             elif joystickRedDown.is_pressed and self.player2.rect.y < self.window.get_height() - self.player2.rect.height:
                 self.player2.move_down()
