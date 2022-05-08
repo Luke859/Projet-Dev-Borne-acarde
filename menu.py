@@ -1,5 +1,5 @@
 import pygame
-from gpiozero import Button
+from game import *
 
 class Menu():
     def __init__(self, game):
@@ -40,7 +40,7 @@ class MainMenu(Menu):
             self.blit_screen()
 
     def move_cursor(self):
-        if self.game.DOWN_KEY:
+        if joystickBlueDown.is_pressed:
             if self.state == 'Start':
                 self.cursor_rect.midtop = (self.optionsx + self.offset, self.optionsy)
                 self.state = 'Options'
