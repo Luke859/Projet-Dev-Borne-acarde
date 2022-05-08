@@ -19,6 +19,7 @@ class Game:
         self.main_menu = MainMenu(self)
         self.options = OptionsMenu(self)
         self.credits = CreditsMenu(self)
+        self.htp = HTPMenu(self)
         self.curr_menu = self.main_menu
 
     def game_loop(self):

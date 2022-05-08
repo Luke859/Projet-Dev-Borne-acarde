@@ -49,14 +49,15 @@ class MainMenu(Menu):
             self.check_input()
             self.game.display.fill(self.game.BLACK)
             self.game.draw_text('Main Menu', 50, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 40)
-            self.game.draw_text("Start Game", 30, self.startx, self.starty)
+            self.game.draw_text("Play", 30, self.startx, self.starty)
             self.game.draw_text("Options", 30, self.optionsx, self.optionsy)
+            self.game.draw_text("How to play", 30, self.optionsx, self.optionsy)
             self.game.draw_text("Credits", 30, self.creditsx, self.creditsy)
             self.draw_cursor()
             self.blit_screen()
 
     def move_cursor(self):
-        if joystickBlueDown.is_pressed:
+        if joystickBlueDown.is_pressed or joystickRedDown.is_pressed:
             if self.state == 'Start':
                 self.cursor_rect.midtop = (self.optionsx + self.offset, self.optionsy)
                 self.state = 'Options'
@@ -66,7 +67,7 @@ class MainMenu(Menu):
             elif self.state == 'Credits':
                 self.cursor_rect.midtop = (self.startx + self.offset, self.starty)
                 self.state = 'Start'
-        elif  joystickBlueUp.is_pressed:
+        elif  joystickBlueUp.is_pressed or joystickRedDown.is_pressed :
             if self.state == 'Start':
                 self.cursor_rect.midtop = (self.creditsx + self.offset, self.creditsy)
                 self.state = 'Credits'
@@ -124,6 +125,24 @@ class OptionsMenu(Menu):
             pass
 
 class CreditsMenu(Menu):
+    def __init__(self, game):
+        Menu.__init__(self, game)
+
+    def display_menu(self):
+        self.run_display = True
+        while self.run_display:
+            self.game.check_events()
+            if self.game.START_KEY or self.game.BACK_KEY:
+                self.game.curr_menu = self.game.main_menu
+                self.run_display = False
+            self.game.display.fill(self.game.BLACK)
+            self.game.draw_text('Credits', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 50)
+            self.game.draw_text('Jeu cree par', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 0)
+            self.game.draw_text('Nathy Mellal & Luke Jones', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 30)
+            self.game.draw_text('en B2 Informatique a Ynov Campus', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 60)
+            self.blit_screen()
+
+class HTPMenu(Menu):
     def __init__(self, game):
         Menu.__init__(self, game)
 
