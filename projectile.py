@@ -10,7 +10,7 @@ class Projectile(pygame.sprite.Sprite):
 
         self.rect.x = player.rect.x
         
-        self.rect.y = player.rect.y + 40
+        self.rect.y = player.rect.y + 30
         self.velocity = 6
         
 
