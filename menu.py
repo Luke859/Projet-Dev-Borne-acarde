@@ -48,7 +48,7 @@ class MainMenu(Menu):
         while self.run_display:
             self.game.check_events()
             self.check_input()
-            self.game.display.fill(self.game.BLACK)
+            # self.game.display.fill(self.game.BLACK)
             self.game.draw_text('Main Menu', 50, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 40)
             self.game.draw_text("Play", 30, self.startx, self.starty)
             self.game.draw_text("Options", 30, self.optionsx, self.optionsy)
