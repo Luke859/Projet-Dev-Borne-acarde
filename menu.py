@@ -1,9 +1,10 @@
 import pygame
 from gpiozero import Button
-from game import button1red
-from game import button2red
-from game import button1blue
-from game import button2blue
+
+button1red = Button("GPIO15")
+button2red = Button("GPIO18")
+button1blue = Button("GPIO12")
+button2blue = Button("GPIO07")
 
 class Menu():
     def __init__(self, game):
