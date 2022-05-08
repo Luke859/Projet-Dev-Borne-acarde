@@ -50,9 +50,9 @@ class Game:
 
             self.player.all_projectiles.draw(self.window)
 
-            if joystickBlueRight.is_pressed and self.player.rect.x < self.window.get_width() - self.player.rect.width:
+            if joystickBlueRight.when_pressed and self.player.rect.x < self.window.get_width() - self.player.rect.width:
                 self.player.move_right()
-            elif joystickBlueLeft.is_pressed and self.player.rect.x > 0:
+            elif joystickBlueLeft.when_pressed and self.player.rect.x > 0:
                 self.player.move_left()
             elif joystickBlueUp.is_pressed and self.player.rect.y > 0:
                 self.player.move_up()
