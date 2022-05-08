@@ -31,9 +31,6 @@ class Game:
         self.htp = HTPMenu(self)
         self.curr_menu = self.main_menu
 
-    def check_collision(self, sprite, group):
-        return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
-
     def game_time(self):
         while self.playing:
             self.check_events()
@@ -46,9 +43,9 @@ class Game:
             
             for projectile in self.player.all_projectiles:
                 projectile.move(1)
-                if self.player2.check_collision(projectile): 
-                    pygame.event.post(pygame.event.Event(self.player2Toucher))
-                    self.player.all_projectiles.remove(projectile)
+                # if self.player2.check_collision(projectile): 
+                #     pygame.event.post(pygame.event.Event(self.player2Toucher))
+                #     self.player.all_projectiles.remove(projectile)
                 
 
             self.player.all_projectiles.draw(self.window)
@@ -67,9 +64,9 @@ class Game:
             
             for projectile in self.player2.all_projectiles:
                 projectile.move(-1)
-                if self.player.check_collision(projectile): 
-                    pygame.event.post(pygame.event.Event(self.playerToucher))
-                    self.player2.all_projectiles.remove(projectile)
+                # if self.player.check_collision(projectile): 
+                #     pygame.event.post(pygame.event.Event(self.playerToucher))
+                #     self.player2.all_projectiles.remove(projectile)
 
             self.player2.all_projectiles.draw(self.window)
 
@@ -94,18 +91,9 @@ class Game:
             if event.type == pygame.QUIT:
                 self.running, self.playing = False, False
                 self.curr_menu.run_display = False
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:
-                    self.START_KEY = True
-                if event.key == pygame.K_BACKSPACE:
-                    self.BACK_KEY = True
-                if event.key == pygame.K_DOWN:
-                    self.DOWN_KEY = True
-                if event.key == pygame.K_UP:
-                    self.UP_KEY = True
 
     def reset_keys(self):
-        self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
+        self.UP_KEY, joystickBlueDown.is_pressed, joystickRedDown.is_pressed, self.START_KEY, self.BACK_KEY = False, False, False, False, False
 
     def draw_text(self, text, size, x, y ):
         font = pygame.font.Font(self.font_name,size)
