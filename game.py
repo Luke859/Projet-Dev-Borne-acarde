@@ -11,7 +11,7 @@ class Game:
         self.display = pygame.Surface((self.DISPLAY_W,self.DISPLAY_H))
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
         self.font_name = 'Nuvel.ttf'
-        
+
         self.all_players = pygame.sprite.Group()
         self.player = Player("assets/red_tank.png", 200, 200)
         self.player2 = Player("assets/bleu_tank.png", 600, 200)
@@ -26,7 +26,7 @@ class Game:
         self.htp = HTPMenu(self)
         self.curr_menu = self.main_menu
 
-    def game(self):
+    def game_loop(self):
         while self.playing:
             self.check_events()
             if self.START_KEY:
