@@ -154,7 +154,6 @@ class CreditsMenu(Menu):
 class HTPMenu(Menu):
     def __init__(self, game):
         Menu.__init__(self, game)
-        self.imageJoystick = pygame.image.load("assets/joystick.jpg")
     def display_menu(self):
         self.run_display = True
         while self.run_display:
@@ -164,5 +163,8 @@ class HTPMenu(Menu):
                 self.run_display = False
             self.game.display.fill(self.game.BLACK)
             self.game.draw_text('how to play', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 50)
-            self.imageJoystick.blit(self.imageJoystick,(0,0))
+            self.imageJoystick = pygame.image.load("assets/joystick.jpg")
+            self.rect = self.imageJoystick.get_rect()
+            self.rect.x = 500
+            self.rect.y = 300
             self.blit_screen()
