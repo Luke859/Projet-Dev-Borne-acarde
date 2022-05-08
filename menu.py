@@ -6,10 +6,10 @@ button2red = Button("GPIO18")
 button1blue = Button("GPIO12")
 button2blue = Button("GPIO07")
 
-# joystickBlueUp = Button("GPIO11")
+joystickBlueUp = Button("GPIO11")
 joystickBlueLeft =Button("GPIO06")
 joystickBlueRight = Button("GPIO13")
-# joystickBlueDown = Button("GPIO05")
+joystickBlueDown = Button("GPIO05")
 
 joystickRedUp = Button("GPIO04")
 joystickRedLeft =Button("GPIO27")
@@ -56,7 +56,7 @@ class MainMenu(Menu):
             self.blit_screen()
 
     def move_cursor(self):
-        if joystickBlueDown.when_pressed == Button("GPIO05") :
+        if joystickBlueDown.is_pressed:
             if self.state == 'Start':
                 self.cursor_rect.midtop = (self.optionsx + self.offset, self.optionsy)
                 self.state = 'Options'
@@ -66,7 +66,7 @@ class MainMenu(Menu):
             elif self.state == 'Credits':
                 self.cursor_rect.midtop = (self.startx + self.offset, self.starty)
                 self.state = 'Start'
-        elif  joystickBlueUp.when_pressed == Button("GPIO11") :
+        elif  joystickBlueUp.is_pressed:
             if self.state == 'Start':
                 self.cursor_rect.midtop = (self.creditsx + self.offset, self.creditsy)
                 self.state = 'Credits'
