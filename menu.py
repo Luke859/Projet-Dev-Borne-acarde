@@ -1,8 +1,20 @@
 import pygame
 from gpiozero import Button
 
+button1red = Button("GPIO15")
+button2red = Button("GPIO18")
+button1blue = Button("GPIO12")
+button2blue = Button("GPIO07")
+
 joystickBlueUp = Button("GPIO11")
+joystickBlueLeft =Button("GPIO06")
+joystickBlueRight = Button("GPIO13")
 joystickBlueDown = Button("GPIO05")
+
+joystickRedUp = Button("GPIO04")
+joystickRedLeft =Button("GPIO27")
+joystickRedRight = Button("GPIO22")
+joystickRedDown = Button("GPIO17")
 
 
 class Menu():
@@ -44,7 +56,7 @@ class MainMenu(Menu):
             self.blit_screen()
 
     def move_cursor(self):
-        if joystickBlueDown.when_pressed:
+        if joystickBlueDown.is_pressed:
             if self.state == 'Start':
                 self.cursor_rect.midtop = (self.optionsx + self.offset, self.optionsy)
                 self.state = 'Options'
@@ -54,7 +66,7 @@ class MainMenu(Menu):
             elif self.state == 'Credits':
                 self.cursor_rect.midtop = (self.startx + self.offset, self.starty)
                 self.state = 'Start'
-        elif  joystickBlueUp.when_pressed:
+        elif  joystickBlueUp.is_pressed:
             if self.state == 'Start':
                 self.cursor_rect.midtop = (self.creditsx + self.offset, self.creditsy)
                 self.state = 'Credits'
@@ -67,7 +79,7 @@ class MainMenu(Menu):
 
     def check_input(self):
         self.move_cursor()
-        if self.game.START_KEY:
+        if button1red.is_pressed or button1blue.is_pressed:
             if self.state == 'Start':
                 self.game.playing = True
             elif self.state == 'Options':
@@ -97,10 +109,10 @@ class OptionsMenu(Menu):
             self.blit_screen()
 
     def check_input(self):
-        if self.game.BACK_KEY:
+        if button1red.is_pressed or button1blue.is_pressed:
             self.game.curr_menu = self.game.main_menu
             self.run_display = False
-        elif self.game.UP_KEY or self.game.DOWN_KEY:
+        elif button1red.is_pressed or button1blue.is_pressed:
             if self.state == 'Volume':
                 self.state = 'Controls'
                 self.cursor_rect.midtop = (self.controlsx + self.offset, self.controlsy)
