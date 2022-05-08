@@ -1,5 +1,9 @@
 import pygame
-from game import *
+from gpiozero import Button
+
+joystickBlueUp = Button("GPIO11")
+joystickBlueDown = Button("GPIO05")
+
 
 class Menu():
     def __init__(self, game):
@@ -50,7 +54,7 @@ class MainMenu(Menu):
             elif self.state == 'Credits':
                 self.cursor_rect.midtop = (self.startx + self.offset, self.starty)
                 self.state = 'Start'
-        elif self.game.UP_KEY:
+        elif  joystickBlueUp.is_pressed:
             if self.state == 'Start':
                 self.cursor_rect.midtop = (self.creditsx + self.offset, self.creditsy)
                 self.state = 'Credits'
