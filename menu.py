@@ -167,4 +167,4 @@ class HTPMenu(Menu):
             self.rect = self.imageJoystick.get_rect()
             self.rect.x = 500
             self.rect.y = 300
-            self.blit_screen()
+            self.blit_screen() 
