@@ -1,9 +1,9 @@
 import pygame
 from gpiozero import Button
 
-button1red = Button("GPIO15")
+buttonred = Button("GPIO15")
 button2red = Button("GPIO18")
-button1blue = Button("GPIO12")
+buttonblue = Button("GPIO12")
 button2blue = Button("GPIO07")
 
 class Menu():
@@ -121,7 +121,7 @@ class CreditsMenu(Menu):
         self.run_display = True
         while self.run_display:
             self.game.check_events()
-            if button1red.is_pressed or button1blue.is_pressed:
+            if buttonred.is_pressed or buttonblue.is_pressed:
                 self.game.curr_menu = self.game.main_menu
                 self.run_display = False
             self.game.display.fill(self.game.BLACK)
