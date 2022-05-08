@@ -12,10 +12,8 @@ class Game:
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
         self.font_name = 'Nuvel.ttf'
 
-        self.all_players = pygame.sprite.Group()
         self.player = Player("assets/red_tank.png", 200, 200)
         self.player2 = Player("assets/bleu_tank.png", 600, 200)
-        self.all_players.add(self.player, self.player2)
 
         self.background = pygame.image.load("assets/Clipboard01.jpg")
         self.border = pygame.Rect(self.DISPLAY_W/2 - 5, 0, 10, self.DISPLAY_H)
@@ -36,13 +34,13 @@ class Game:
             self.window.blit(self.player.image, self.player.rect)
             self.window.blit(self.player2.image, self.player2.rect)
             pygame.draw.rect(self.window, self.BLACK, self.border)
-
+            
             for projectile in self.player.all_projectiles:
                 projectile.move(1)
 
             self.player.all_projectiles.draw(self.window)
 
-            if joystickBlueRight.is_pressed and self.player.rect.x < self.border - self.player.rect.width:
+            if joystickBlueRight.is_pressed and self.player.rect.x + self.player.rect.width < self.border.x:
                 self.player.move_right()
             elif joystickBlueLeft.is_pressed and self.player.rect.x > 0:
                 self.player.move_left()
