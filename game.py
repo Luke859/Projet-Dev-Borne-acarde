@@ -11,6 +11,8 @@ class Game:
         self.display = pygame.Surface((self.DISPLAY_W,self.DISPLAY_H))
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
         self.font_name = 'Nuvel.ttf'
+        self.all_players = pygame.sprite.Group()
+        self.all_players.add(self.player, self.player2)
         self.player = Player("assets/red_tank.png", 200, 200)
         self.player2 = Player("assets/bleu_tank.png", 600, 200)
         self.background = pygame.image.load("assets/Clipboard01.jpg")
@@ -65,6 +67,8 @@ class Game:
             pygame.display.update()
             self.reset_keys()
 
+    def check_collision(self, sprite, group):
+        return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
 
     def check_events(self):
         for event in pygame.event.get():
