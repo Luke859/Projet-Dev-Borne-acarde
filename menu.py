@@ -36,7 +36,7 @@ class Menu():
 class MainMenu(Menu):
     def __init__(self, game):
         Menu.__init__(self, game)
-        self.state = "Start"
+        self.currentName = "Start"
         self.startx, self.starty = self.mid_w, self.mid_h + 30
         self.optionsx, self.optionsy = self.mid_w, self.mid_h + 70
         self.htpx, self.htpy = self.mid_w, self.mid_h + 110
@@ -59,42 +59,42 @@ class MainMenu(Menu):
 
     def move_cursor(self):
         if joystickBlueDown.is_pressed or joystickRedDown.is_pressed:
-            if self.state == 'Start':
+            if self.currentName == 'Start':
                 self.cursor_rect.midtop = (self.optionsx + self.offset, self.optionsy)
-                self.state = 'Options'
-            elif self.state == 'Options':
+                self.currentName = 'Options'
+            elif self.currentName == 'Options':
                 self.cursor_rect.midtop = (self.htpx + self.offset, self.htpy)
-                self.state = 'How to play'
-            elif self.state == 'How to play':
+                self.currentName = 'How to play'
+            elif self.currentName == 'How to play':
                 self.cursor_rect.midtop = (self.creditsx + self.offset, self.creditsy)
-                self.state = 'Credits'
-            elif self.state == 'Credits':
+                self.currentName = 'Credits'
+            elif self.currentName == 'Credits':
                 self.cursor_rect.midtop = (self.startx + self.offset, self.starty)
-                self.state = 'Start'
+                self.currentName = 'Start'
         elif  joystickBlueUp.is_pressed or joystickRedUp.is_pressed :
-            if self.state == 'Start':
+            if self.currentName == 'Start':
                 self.cursor_rect.midtop = (self.creditsx + self.offset, self.creditsy)
-                self.state = 'Credits'
-            elif self.state == 'Options':
+                self.currentName = 'Credits'
+            elif self.currentName == 'Options':
                 self.cursor_rect.midtop = (self.startx + self.offset, self.starty)
-                self.state = 'Start'
-            elif self.state == 'How to play':
+                self.currentName = 'Start'
+            elif self.currentName == 'How to play':
                 self.cursor_rect.midtop = (self.optionsx + self.offset, self.optionsy)
-                self.state = 'Options'
-            elif self.state == 'Credits':
+                self.currentName = 'Options'
+            elif self.currentName == 'Credits':
                 self.cursor_rect.midtop = (self.htpx + self.offset, self.htpy)
-                self.state = 'How to play'
+                self.currentName = 'How to play'
 
     def check_input(self):
         self.move_cursor()
         if button1red.is_pressed or button1blue.is_pressed:
-            if self.state == 'Start':
+            if self.currentName == 'Start':
                 self.game.playing = True
-            elif self.state == 'Options':
+            elif self.currentName == 'Options':
                 self.game.curr_menu = self.game.options
-            elif self.state == 'How to play':
+            elif self.currentName == 'How to play':
                 self.game.curr_menu = self.game.htp
-            elif self.state == 'Credits':
+            elif self.currentName == 'Credits':
                 self.game.curr_menu = self.game.credits
             self.run_display = False
 
