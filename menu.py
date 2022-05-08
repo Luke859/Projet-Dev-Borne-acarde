@@ -154,7 +154,6 @@ class CreditsMenu(Menu):
 class HTPMenu(Menu):
     def __init__(self, game):
         Menu.__init__(self, game)
-
     def display_menu(self):
         self.run_display = True
         while self.run_display:
@@ -162,7 +161,6 @@ class HTPMenu(Menu):
             if self.game.START_KEY or self.game.BACK_KEY:
                 self.game.curr_menu = self.game.main_menu
                 self.run_display = False
-            self.game.window = (self.game.imageJoystick,(0,0))
             self.game.display.fill(self.game.BLACK)
             self.game.draw_text('how to play', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 50)
             self.blit_screen()
