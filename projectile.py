@@ -8,9 +8,9 @@ class Projectile(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, ((50,50)))
         self.rect = self.image.get_rect()
 
-        self.rect.x = player.rect.x - 50
+        self.rect.x = player.rect.x
         
-        self.rect.y = player.rect.y 
+        self.rect.y = player.rect.y - 5
         self.velocity = 6
         
 
