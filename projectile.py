@@ -19,8 +19,6 @@ class Projectile(pygame.sprite.Sprite):
         
     def move(self, direction):
         self.rect.x += self.velocity * direction
-     
-
 
         if self.rect.x > 800:
             self.remove()
