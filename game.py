@@ -26,7 +26,7 @@ class Game:
         self.DISPLAY_W, self.DISPLAY_H = 800,400
         self.display = pygame.Surface((self.DISPLAY_W,self.DISPLAY_H))
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
-        self.font_name = '04B_30__.TTF'
+        self.font_name = 'Nuvel.TTF'
         self.player = Player("assets/red_tank.png", 200, 200)
         self.player2 = Player("assets/bleu_tank.png", 600, 200)
         self.background = pygame.image.load("assets/Clipboard01.jpg")
