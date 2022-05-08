@@ -21,8 +21,8 @@ class MainMenu(Menu):
         Menu.__init__(self, game)
         self.state = "Start"
         self.startx, self.starty = self.mid_w, self.mid_h + 30
-        self.optionsx, self.optionsy = self.mid_w, self.mid_h + 50
-        self.creditsx, self.creditsy = self.mid_w, self.mid_h + 70
+        self.optionsx, self.optionsy = self.mid_w, self.mid_h + 60
+        self.creditsx, self.creditsy = self.mid_w, self.mid_h + 80
         self.cursor_rect.midtop = (self.startx + self.offset, self.starty)
 
     def display_menu(self):
@@ -32,9 +32,9 @@ class MainMenu(Menu):
             self.check_input()
             self.game.display.fill(self.game.BLACK)
             self.game.draw_text('Main Menu', 50, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 40)
-            self.game.draw_text("Start Game", 20, self.startx, self.starty)
-            self.game.draw_text("Options", 20, self.optionsx, self.optionsy)
-            self.game.draw_text("Credits", 20, self.creditsx, self.creditsy)
+            self.game.draw_text("Start Game", 30, self.startx, self.starty)
+            self.game.draw_text("Options", 30, self.optionsx, self.optionsy)
+            self.game.draw_text("Credits", 30, self.creditsx, self.creditsy)
             self.draw_cursor()
             self.blit_screen()
 
