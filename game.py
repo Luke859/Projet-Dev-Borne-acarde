@@ -15,6 +15,9 @@ class Game:
         self.player = Player("assets/red_tank.png", 200, 200)
         self.player2 = Player("assets/bleu_tank.png", 600, 200)
 
+        self.playerToucher = pygame.USEREVENT + 1
+        self.player2Toucher = pygame.USEREVENT + 2
+
         self.background = pygame.image.load("assets/Clipboard01.jpg")
         self.border = pygame.Rect(self.DISPLAY_W/2 - 5, 0, 10, self.DISPLAY_H)
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
@@ -37,6 +40,9 @@ class Game:
             
             for projectile in self.player.all_projectiles:
                 projectile.move(1)
+                if self.player2.colliderect(projectile): 
+                    pygame.event.post(pygame.event.Event(self.player2Toucher))
+                    self.player.all_projectiles.remove(projectile)
 
             self.player.all_projectiles.draw(self.window)
 
@@ -54,8 +60,11 @@ class Game:
             
             for projectile in self.player2.all_projectiles:
                 projectile.move(-1)
+                if self.player.colliderect(projectile): 
+                    pygame.event.post(pygame.event.Event(self.playerToucher))
+                    self.player2.all_projectiles.remove(projectile)
 
-                self.player2.all_projectiles.draw(self.window)
+            self.player2.all_projectiles.draw(self.window)
 
             if joystickRedRight.is_pressed and self.player2.rect.x < self.window.get_width() - self.player2.rect.width:
                 self.player2.move_right()
