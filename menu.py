@@ -1,4 +1,20 @@
 import pygame
+from gpiozero import Button
+
+button1red = Button("GPIO15")
+button2red = Button("GPIO18")
+button1blue = Button("GPIO12")
+button2blue = Button("GPIO07")
+
+joystickBlueUp = Button("GPIO11")
+joystickBlueLeft =Button("GPIO06")
+joystickBlueRight = Button("GPIO13")
+joystickBlueDown = Button("GPIO05")
+
+joystickRedUp = Button("GPIO04")
+joystickRedLeft =Button("GPIO27")
+joystickRedRight = Button("GPIO22")
+joystickRedDown = Button("GPIO17")
 
 class Menu():
     def __init__(self, game):
@@ -38,9 +54,8 @@ class MainMenu(Menu):
             self.draw_cursor()
             self.blit_screen()
 
-
     def move_cursor(self):
-        if self.game.DOWN_KEY:
+        if joystickBlueDown.is_pressed :
             if self.state == 'Start':
                 self.cursor_rect.midtop = (self.optionsx + self.offset, self.optionsy)
                 self.state = 'Options'
@@ -50,7 +65,7 @@ class MainMenu(Menu):
             elif self.state == 'Credits':
                 self.cursor_rect.midtop = (self.startx + self.offset, self.starty)
                 self.state = 'Start'
-        elif self.game.UP_KEY:
+        elif joystickBlueUp.is_pressed:
             if self.state == 'Start':
                 self.cursor_rect.midtop = (self.creditsx + self.offset, self.creditsy)
                 self.state = 'Credits'
