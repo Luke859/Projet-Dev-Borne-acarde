@@ -13,8 +13,8 @@ class Game:
         self.font_name = 'Nuvel.ttf'
 
         self.all_players = pygame.sprite.Group()
-        self.player = Player(self)
-        self.player2 = Player(self)
+        self.player = Player("assets/red_tank.png", 200, 200)
+        self.player2 = Player("assets/bleu_tank.png", 600, 200)
         self.all_players.add(self.player)
         self.all_players.add(self.player2)
 
@@ -46,8 +46,12 @@ class Game:
             
             for projectile in self.player.all_projectiles:
                 projectile.move(1)
+                # if self.player2.check_collision(projectile): 
+                #     pygame.event.post(pygame.event.Event(self.player2Toucher))
+                #     self.player.all_projectiles.remove(projectile)
                 if self.player2.check_collision(self, self.player.all_players):
                     self.player.all_projectiles.remove(projectile)
+                
 
             self.player.all_projectiles.draw(self.window)
 
@@ -65,6 +69,9 @@ class Game:
             
             for projectile in self.player2.all_projectiles:
                 projectile.move(-1)
+                # if self.player.check_collision(projectile): 
+                #     pygame.event.post(pygame.event.Event(self.playerToucher))
+                #     self.player2.all_projectiles.remove(projectile)
                 if self.player.check_collision(self, self.player.all_players):
                     self.player.all_projectiles.remove(projectile)
 
