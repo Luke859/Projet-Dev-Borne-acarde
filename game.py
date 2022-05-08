@@ -12,8 +12,11 @@ class Game:
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
         self.font_name = 'Nuvel.ttf'
 
+        self.all_players = pygame.sprite.Group()
         self.player = Player("assets/red_tank.png", 200, 200)
         self.player2 = Player("assets/bleu_tank.png", 600, 200)
+        self.all_players.add(self.player)
+        self.all_players.add(self.player2)
 
         self.playerToucher = pygame.USEREVENT + 1
         self.player2Toucher = pygame.USEREVENT + 2
@@ -27,6 +30,9 @@ class Game:
         self.credits = CreditsMenu(self)
         self.htp = HTPMenu(self)
         self.curr_menu = self.main_menu
+
+    def check_collision(self, sprite, group):
+        return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
 
     def game_time(self):
         while self.playing:
