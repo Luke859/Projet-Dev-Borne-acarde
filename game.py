@@ -10,6 +10,7 @@ class Game:
         self.DISPLAY_W, self.DISPLAY_H = 800,400
         self.display = pygame.Surface((self.DISPLAY_W,self.DISPLAY_H))
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
+        self.imageJoystick = pygame.image.load("assets/joystick.jpg")
         self.font_name = 'Nuvel.ttf'
         self.player = Player("assets/red_tank.png", 200, 200)
         self.player2 = Player("assets/bleu_tank.png", 600, 200)
