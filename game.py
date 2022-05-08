@@ -18,6 +18,7 @@ class Game:
         self.all_players.add(self.player, self.player2)
 
         self.background = pygame.image.load("assets/Clipboard01.jpg")
+        self.border = pygame.Rect(self.DISPLAY_W/2 - 5, 0, 10, self.DISPLAY_H)
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
         self.pressed = {}
         self.main_menu = MainMenu(self)
@@ -34,6 +35,7 @@ class Game:
             self.window.blit(self.background,(0,0))
             self.window.blit(self.player.image, self.player.rect)
             self.window.blit(self.player2.image, self.player2.rect)
+            pygame.draw.rect(self.window, self.BLACK, self.border)
             for projectile in self.player.all_projectiles:
                 projectile.move(1)
 
