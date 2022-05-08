@@ -39,7 +39,8 @@ class MainMenu(Menu):
         self.state = "Start"
         self.startx, self.starty = self.mid_w, self.mid_h + 30
         self.optionsx, self.optionsy = self.mid_w, self.mid_h + 70
-        self.creditsx, self.creditsy = self.mid_w, self.mid_h + 110
+        self.htpx, self.htpy = self.mid_w, self.mid_h + 110
+        self.creditsx, self.creditsy = self.mid_w, self.mid_h + 150
         self.cursor_rect.midtop = (self.startx + self.offset, self.starty)
 
     def display_menu(self):
@@ -51,7 +52,7 @@ class MainMenu(Menu):
             self.game.draw_text('Main Menu', 50, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 40)
             self.game.draw_text("Play", 30, self.startx, self.starty)
             self.game.draw_text("Options", 30, self.optionsx, self.optionsy)
-            self.game.draw_text("How to play", 30, self.optionsx, self.optionsy)
+            self.game.draw_text("How to play", 30, self.htpx, self.htpy)
             self.game.draw_text("Credits", 30, self.creditsx, self.creditsy)
             self.draw_cursor()
             self.blit_screen()
@@ -62,6 +63,9 @@ class MainMenu(Menu):
                 self.cursor_rect.midtop = (self.optionsx + self.offset, self.optionsy)
                 self.state = 'Options'
             elif self.state == 'Options':
+                self.cursor_rect.midtop = (self.htpx + self.offset, self.htpy)
+                self.state = 'How to play'
+            elif self.state == 'How to play':
                 self.cursor_rect.midtop = (self.creditsx + self.offset, self.creditsy)
                 self.state = 'Credits'
             elif self.state == 'Credits':
@@ -74,9 +78,12 @@ class MainMenu(Menu):
             elif self.state == 'Options':
                 self.cursor_rect.midtop = (self.startx + self.offset, self.starty)
                 self.state = 'Start'
-            elif self.state == 'Credits':
+            elif self.state == 'How to play':
                 self.cursor_rect.midtop = (self.optionsx + self.offset, self.optionsy)
                 self.state = 'Options'
+            elif self.state == 'Credits':
+                self.cursor_rect.midtop = (self.htpx + self.offset, self.htpy)
+                self.state = 'How to play'
 
     def check_input(self):
         self.move_cursor()
@@ -85,6 +92,8 @@ class MainMenu(Menu):
                 self.game.playing = True
             elif self.state == 'Options':
                 self.game.curr_menu = self.game.options
+            elif self.state == 'How to play':
+                self.game.curr_menu = self.game.htp
             elif self.state == 'Credits':
                 self.game.curr_menu = self.game.credits
             self.run_display = False
@@ -145,7 +154,6 @@ class CreditsMenu(Menu):
 class HTPMenu(Menu):
     def __init__(self, game):
         Menu.__init__(self, game)
-
     def display_menu(self):
         self.run_display = True
         while self.run_display:
@@ -154,8 +162,5 @@ class HTPMenu(Menu):
                 self.game.curr_menu = self.game.main_menu
                 self.run_display = False
             self.game.display.fill(self.game.BLACK)
-            self.game.draw_text('Credits', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 50)
-            self.game.draw_text('Jeu cree par', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 0)
-            self.game.draw_text('Nathy Mellal & Luke Jones', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 30)
-            self.game.draw_text('en B2 Informatique a Ynov Campus', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 60)
+            self.game.draw_text('how to play', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 50)
             self.blit_screen()
