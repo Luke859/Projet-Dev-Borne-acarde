@@ -36,12 +36,13 @@ class Game:
             self.window.blit(self.player.image, self.player.rect)
             self.window.blit(self.player2.image, self.player2.rect)
             pygame.draw.rect(self.window, self.BLACK, self.border)
+
             for projectile in self.player.all_projectiles:
                 projectile.move(1)
 
             self.player.all_projectiles.draw(self.window)
 
-            if joystickBlueRight.is_pressed and self.player.rect.x < self.window.get_width() - self.player.rect.width:
+            if joystickBlueRight.is_pressed and self.player.rect.x < self.border - self.player.rect.width:
                 self.player.move_right()
             elif joystickBlueLeft.is_pressed and self.player.rect.x > 0:
                 self.player.move_left()
