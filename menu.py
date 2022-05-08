@@ -165,8 +165,8 @@ class HTPMenu(Menu):
             self.game.draw_text('<- Gauche', 15, self.game.DISPLAY_W / 2 - 225, self.game.DISPLAY_H / 2 + 30)
             self.game.draw_text('v Bas', 15, self.game.DISPLAY_W / 2 - 150, self.game.DISPLAY_H / 2 + 60)
             self.game.draw_text('Boutons :', 30, self.game.DISPLAY_W / 2 + 100, self.game.DISPLAY_H / 2 - 50)
-            self.game.draw_text('Bouton GAUCHE = Capacity de tir', 15, self.game.DISPLAY_W / 2 + 200, self.game.DISPLAY_H / 2 - 0)
-            self.game.draw_text('Bouton DROITE = Capacity speciale', 15, self.game.DISPLAY_W / 2 + 200, self.game.DISPLAY_H / 2 + 40)
+            self.game.draw_text('Bouton DROITE -> Capacity de tir', 15, self.game.DISPLAY_W / 2 + 200, self.game.DISPLAY_H / 2 - 0)
+            self.game.draw_text('Bouton GAUCHE -> Capacity speciale', 15, self.game.DISPLAY_W / 2 + 200, self.game.DISPLAY_H / 2 + 40)
             self.game.draw_text('', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 50)
 
             self.blit_screen() 
