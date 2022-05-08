@@ -44,7 +44,7 @@ class MainMenu(Menu):
             self.blit_screen()
 
     def move_cursor(self):
-        if joystickBlueDown.is_pressed:
+        if joystickBlueDown.when_pressed:
             if self.state == 'Start':
                 self.cursor_rect.midtop = (self.optionsx + self.offset, self.optionsy)
                 self.state = 'Options'
@@ -54,7 +54,7 @@ class MainMenu(Menu):
             elif self.state == 'Credits':
                 self.cursor_rect.midtop = (self.startx + self.offset, self.starty)
                 self.state = 'Start'
-        elif  joystickBlueUp.is_pressed:
+        elif  joystickBlueUp.when_pressed:
             if self.state == 'Start':
                 self.cursor_rect.midtop = (self.creditsx + self.offset, self.creditsy)
                 self.state = 'Credits'
