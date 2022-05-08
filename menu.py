@@ -161,6 +161,8 @@ class HTPMenu(Menu):
             if self.game.START_KEY or self.game.BACK_KEY:
                 self.game.curr_menu = self.game.main_menu
                 self.run_display = False
+            self.imageJoystick = pygame.image.load("assets/joystick.jpg")
+            self.game.blit(self.imageJoystick,(0,0))
             self.game.display.fill(self.game.BLACK)
             self.game.draw_text('how to play', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 50)
             self.blit_screen()
