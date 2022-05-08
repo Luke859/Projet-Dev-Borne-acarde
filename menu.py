@@ -159,6 +159,6 @@ class HTPMenu(Menu):
                 self.game.curr_menu = self.game.main_menu
                 self.run_display = False
             self.imageJoystick = pygame.image.load("assets/joystick.jpg")
-            self.game.display.fill(self.imageJoystick)
+            self.game.display(self.imageJoystick)
             self.game.draw_text('how to play', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 50)
             self.blit_screen() 
