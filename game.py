@@ -40,9 +40,9 @@ class Game:
             
             for projectile in self.player.all_projectiles:
                 projectile.move(1)
-                # if self.player2.check_collision(projectile): 
-                #     pygame.event.post(pygame.event.Event(self.player2Toucher))
-                #     self.player.all_projectiles.remove(projectile)
+                if self.player2.check_collision(projectile): 
+                    pygame.event.post(pygame.event.Event(self.player2Toucher))
+                    self.player.all_projectiles.remove(projectile)
 
             self.player.all_projectiles.draw(self.window)
 
@@ -60,9 +60,9 @@ class Game:
             
             for projectile in self.player2.all_projectiles:
                 projectile.move(-1)
-                # if self.player.check_collision(projectile): 
-                #     pygame.event.post(pygame.event.Event(self.playerToucher))
-                #     self.player2.all_projectiles.remove(projectile)
+                if self.player.check_collision(projectile): 
+                    pygame.event.post(pygame.event.Event(self.playerToucher))
+                    self.player2.all_projectiles.remove(projectile)
 
             self.player2.all_projectiles.draw(self.window)
 
