@@ -3,7 +3,7 @@ import pygame
 class Projectile(pygame.sprite.Sprite):
     def __init__(self, player):
         super().__init__()
-        self.player =player
+        self.player = player
         self.image = pygame.image.load("assets/bullet.png")
         self.image = pygame.transform.scale(self.image, ((50,50)))
         self.rect = self.image.get_rect()

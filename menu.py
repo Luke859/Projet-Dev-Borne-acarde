@@ -129,9 +129,6 @@ class OptionsMenu(Menu):
             elif self.state == 'Controls':
                 self.state = 'Volume'
                 self.cursor_rect.midtop = (self.volx + self.offset, self.voly)
-        elif self.game.START_KEY:
-            # TO-DO: Create a Volume Menu and a Controls Menu
-            pass
 
 class CreditsMenu(Menu):
     def __init__(self, game):
@@ -161,10 +158,7 @@ class HTPMenu(Menu):
             if self.game.START_KEY or self.game.BACK_KEY:
                 self.game.curr_menu = self.game.main_menu
                 self.run_display = False
-            self.game.display.fill(self.game.BLACK)
-            self.game.draw_text('how to play', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 50)
             self.imageJoystick = pygame.image.load("assets/joystick.jpg")
-            self.rect = self.imageJoystick.get_rect()
-            self.rect.x = 500
-            self.rect.y = 300
+            self.game.display.fill(self.imageJoystick)
+            self.game.draw_text('how to play', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 50)
             self.blit_screen() 
