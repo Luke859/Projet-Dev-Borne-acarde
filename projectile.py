@@ -5,13 +5,13 @@ class Projectile(pygame.sprite.Sprite):
         super().__init__()
         self.player =player
         self.image = pygame.image.load("assets/bullet.png")
-        self.image = pygame.transform.scale(self.image, (30,50))
+        self.image = pygame.transform.scale(self.image, (50,50))
         self.rect = self.image.get_rect()
 
         self.rect.x = player.rect.x 
         
         self.rect.y = player.rect.y 
-        self.velocity = 10
+        self.velocity = 6
         
 
     def remove(self):
