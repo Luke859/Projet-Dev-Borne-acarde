@@ -16,6 +16,10 @@ joystickRedLeft =Button("GPIO27")
 joystickRedRight = Button("GPIO22")
 joystickRedDown = Button("GPIO17")
 
+DISPLAY_W, DISPLAY_H = 800,400
+display = pygame.Surface((DISPLAY_W ,DISPLAY_H))
+window = pygame.display.set_mode(((DISPLAY_W, DISPLAY_H)))
+
 
 class Menu():
     def __init__(self, game):
@@ -49,6 +53,8 @@ class MainMenu(Menu):
             self.game.check_events()
             self.check_input()
             # self.game.display.fill(self.game.BLACK)
+            self.background = pygame.image.load("assets/Clipboard01.jpg")
+            window.blit(self.background,(0,0))
             self.game.draw_text('Main Menu', 50, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 40)
             self.game.draw_text("Play", 30, self.startx, self.starty)
             self.game.draw_text("Options", 30, self.optionsx, self.optionsy)
@@ -152,9 +158,6 @@ class HTPMenu(Menu):
     def __init__(self, game):
         Menu.__init__(self, game)
     def display_menu(self):
-        self.DISPLAY_W, self.DISPLAY_H = 800,400
-        self.display = pygame.Surface((self.DISPLAY_W,self.DISPLAY_H))
-        self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
         self.run_display = True
         while self.run_display:
             self.game.check_events()
