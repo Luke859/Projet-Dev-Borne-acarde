@@ -26,7 +26,7 @@ class Game:
         self.htp = HTPMenu(self)
         self.curr_menu = self.main_menu
 
-    def game(self):
+    def game_loop(self):
         while self.playing:
             self.check_events()
             if self.START_KEY:
