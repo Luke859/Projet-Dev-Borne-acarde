@@ -5,7 +5,7 @@ class Menu():
         self.game = game
         self.mid_w, self.mid_h = self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2
         self.run_display = True
-        self.cursor_rect = pygame.Rect(0, 0, 0, 0)
+        self.cursor_rect = pygame.Rect(0, 0, -40, -40)
         self.offset = - 100
 
     def draw_cursor(self):
