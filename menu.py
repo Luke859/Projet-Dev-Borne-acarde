@@ -1,21 +1,6 @@
 import pygame
 from gpiozero import Button
 
-button1red = Button("GPIO15")
-button2red = Button("GPIO18")
-button1blue = Button("GPIO12")
-button2blue = Button("GPIO07")
-
-joystickBlueUp = Button("GPIO11")
-joystickBlueLeft =Button("GPIO06")
-joystickBlueRight = Button("GPIO13")
-joystickBlueDown = Button("GPIO05")
-
-joystickRedUp = Button("GPIO04")
-joystickRedLeft =Button("GPIO27")
-joystickRedRight = Button("GPIO22")
-joystickRedDown = Button("GPIO17")
-
 class Menu():
     def __init__(self, game):
         self.game = game
