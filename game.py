@@ -24,13 +24,11 @@ class Game:
         self.background = pygame.image.load("assets/Clipboard01.jpg")
         self.border = pygame.Rect(self.DISPLAY_W/2 - 5, 0, 10, self.DISPLAY_H)
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
-        # self.pressed = {}
-
+        self.pressed = {}
         self.main_menu = MainMenu(self)
         self.options = OptionsMenu(self)
         self.credits = CreditsMenu(self)
         self.htp = HTPMenu(self)
-
         self.curr_menu = self.main_menu
 
     def game_time(self):
@@ -92,15 +90,15 @@ class Game:
             if event.type == pygame.QUIT:
                 self.running, self.playing = False, False
                 self.curr_menu.run_display = False
-            # if event.type == pygame.KEYDOWN:
-            #     if event.key == pygame.K_RETURN:
-            #         self.START_KEY = True
-            #     if event.key == pygame.K_BACKSPACE:
-            #         self.BACK_KEY = True
-            #     if event.key == pygame.K_DOWN:
-            #         self.DOWN_KEY = True
-            #     if event.key == pygame.K_UP:
-            #         self.UP_KEY = True
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    self.START_KEY = True
+                if event.key == pygame.K_BACKSPACE:
+                    self.BACK_KEY = True
+                if event.key == pygame.K_DOWN:
+                    self.DOWN_KEY = True
+                if event.key == pygame.K_UP:
+                    self.UP_KEY = True
 
     def reset_keys(self):
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
