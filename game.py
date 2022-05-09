@@ -80,7 +80,7 @@ class Game:
             if button2red.is_pressed :
                 self.player2.launch_projectile()
             pygame.display.update()
-            self.reset_keys()
+            # self.reset_keys()
 
     # def check_collision(self, sprite, group):
     #     return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
