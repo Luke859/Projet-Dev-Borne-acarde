@@ -31,7 +31,7 @@ class Menu():
     def blit_screen(self):
         self.game.window.blit(self.game.display, (0, 0))
         pygame.display.update()
-        self.game.reset_keys()
+        # self.game.reset_keys()
 
 class MainMenu(Menu):
     def __init__(self, game):
