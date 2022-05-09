@@ -24,11 +24,13 @@ class Game:
         self.background = pygame.image.load("assets/Clipboard01.jpg")
         self.border = pygame.Rect(self.DISPLAY_W/2 - 5, 0, 10, self.DISPLAY_H)
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
-        self.pressed = {}
+        # self.pressed = {}
+
         self.main_menu = MainMenu(self)
         self.options = OptionsMenu(self)
         self.credits = CreditsMenu(self)
         self.htp = HTPMenu(self)
+
         self.curr_menu = self.main_menu
 
     def game_time(self):
