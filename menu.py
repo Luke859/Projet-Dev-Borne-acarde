@@ -112,9 +112,9 @@ class OptionsMenu(Menu):
             self.game.check_events()
             self.check_input()
             self.game.display.fill((0, 0, 0))
-            self.game.draw_text('Options', 50, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 30)
-            self.game.draw_text("Speed", 30, self.volx, self.voly)
-            self.game.draw_text("Shot power", 30, self.controlsx, self.controlsy)
+            self.game.draw_text('Options', 50, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 50)
+            self.game.draw_text("Speed", 30, self.volx, self.voly + 0)
+            self.game.draw_text("Shot power", 30, self.controlsx, self.controlsy + 30)
             self.draw_cursor()
             self.blit_screen()
 
