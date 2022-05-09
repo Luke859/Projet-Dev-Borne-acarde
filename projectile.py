@@ -16,7 +16,6 @@ class Projectile(pygame.sprite.Sprite):
 
     def remove(self):
         self.player.all_projectiles.remove(self)
-        self.player2.all_projectiles.remove(self)
         
     def move(self, direction):
         self.rect.x += self.velocity * direction
