@@ -6,6 +6,7 @@ class Game:
     def __init__(self):
         pygame.init()
         self.running, self.playing = True, False
+        self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
         self.DISPLAY_W, self.DISPLAY_H = 800,400
         self.display = pygame.Surface((self.DISPLAY_W,self.DISPLAY_H))
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
@@ -23,6 +24,7 @@ class Game:
         self.background = pygame.image.load("assets/Clipboard01.jpg")
         self.border = pygame.Rect(self.DISPLAY_W/2 - 5, 0, 10, self.DISPLAY_H)
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
+        self.pressed = {}
         self.main_menu = MainMenu(self)
         self.options = OptionsMenu(self)
         self.credits = CreditsMenu(self)
@@ -80,8 +82,8 @@ class Game:
             pygame.display.update()
             self.reset_keys()
 
-    # def check_collision(self, sprite, group):
-    #     return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
+    def check_collision(self, sprite, group):
+        return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
 
     def check_events(self):
         for event in pygame.event.get():
@@ -98,8 +100,8 @@ class Game:
                 if event.key == pygame.K_UP:
                     self.UP_KEY = True
 
-    # def reset_keys(self):
-    #     self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
+    def reset_keys(self):
+        self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
 
     def draw_text(self, text, size, x, y ):
         font = pygame.font.Font(self.font_name,size)
