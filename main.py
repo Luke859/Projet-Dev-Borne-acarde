@@ -9,6 +9,4 @@ while running:
     
     game.curr_menu.display_menu()
     game.game_time()
-    
-    pygame.display.flip()
           

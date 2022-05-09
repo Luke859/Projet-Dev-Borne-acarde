@@ -6,7 +6,7 @@ class Game:
     def __init__(self):
         pygame.init()
         self.running, self.playing = True, False
-        self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
+        # self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
         self.DISPLAY_W, self.DISPLAY_H = 800,400
         self.display = pygame.Surface((self.DISPLAY_W,self.DISPLAY_H))
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
@@ -82,26 +82,26 @@ class Game:
             pygame.display.update()
             self.reset_keys()
 
-    def check_collision(self, sprite, group):
-        return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
+    # def check_collision(self, sprite, group):
+    #     return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
 
     def check_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running, self.playing = False, False
                 self.curr_menu.run_display = False
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:
-                    self.START_KEY = True
-                if event.key == pygame.K_BACKSPACE:
-                    self.BACK_KEY = True
-                if event.key == pygame.K_DOWN:
-                    self.DOWN_KEY = True
-                if event.key == pygame.K_UP:
-                    self.UP_KEY = True
+            # if event.type == pygame.KEYDOWN:
+            #     if event.key == pygame.K_RETURN:
+            #         self.START_KEY = True
+            #     if event.key == pygame.K_BACKSPACE:
+            #         self.BACK_KEY = True
+            #     if event.key == pygame.K_DOWN:
+            #         self.DOWN_KEY = True
+            #     if event.key == pygame.K_UP:
+            #         self.UP_KEY = True
 
-    def reset_keys(self):
-        self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
+    # def reset_keys(self):
+    #     self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
 
     def draw_text(self, text, size, x, y ):
         font = pygame.font.Font(self.font_name,size)

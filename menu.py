@@ -112,9 +112,9 @@ class OptionsMenu(Menu):
             self.game.check_events()
             self.check_input()
             self.game.display.fill((0, 0, 0))
-            self.game.draw_text('Options', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 30)
-            self.game.draw_text("Volume", 15, self.volx, self.voly)
-            self.game.draw_text("Controls", 15, self.controlsx, self.controlsy)
+            self.game.draw_text('Options', 50, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 30)
+            self.game.draw_text("Speed", 30, self.volx, self.voly)
+            self.game.draw_text("Shot power", 30, self.controlsx, self.controlsy)
             self.draw_cursor()
             self.blit_screen()
 
@@ -165,8 +165,8 @@ class HTPMenu(Menu):
             self.game.draw_text('<- Gauche', 15, self.game.DISPLAY_W / 2 - 225, self.game.DISPLAY_H / 2 + 30)
             self.game.draw_text('v Bas', 15, self.game.DISPLAY_W / 2 - 150, self.game.DISPLAY_H / 2 + 60)
             self.game.draw_text('Boutons :', 30, self.game.DISPLAY_W / 2 + 100, self.game.DISPLAY_H / 2 - 50)
-            self.game.draw_text('Bouton DROITE -> Capacity de tir', 15, self.game.DISPLAY_W / 2 + 200, self.game.DISPLAY_H / 2 - 0)
-            self.game.draw_text('Bouton GAUCHE -> Capacity speciale', 15, self.game.DISPLAY_W / 2 + 200, self.game.DISPLAY_H / 2 + 40)
+            self.game.draw_text('Bouton DROIT -> Capacitée de tir', 15, self.game.DISPLAY_W / 2 + 200, self.game.DISPLAY_H / 2 - 0)
+            self.game.draw_text('Bouton GAUCHE -> Capacitée speciale', 15, self.game.DISPLAY_W / 2 + 200, self.game.DISPLAY_H / 2 + 40)
             self.game.draw_text('', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 50)
 
             self.blit_screen() 
